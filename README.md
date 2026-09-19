@@ -28,11 +28,26 @@ AI 交互式梳理你的叙述，经你认同后落笔；不认同，就继续�
 - SKILL 本体：[skills/distill/SKILL.md](skills/distill/SKILL.md)
 - 写作准则：[skills/distill/references/blog-style.md](skills/distill/references/blog-style.md)
 
+## ai-era-tutorial
+
+读者的执行模式变了：教程被当成索引，agent 被当成手脚，人只负责指挥和核对输出。而锻炼住在"长过程"的那段路里，AI 恰恰把那段路变成了可以秒取的捷径。
+
+ai-era-tutorial 是 AI 时代编程入门教程的编写方法。按学习价值给每一步分类：
+
+- 代理区：不写过程，只给预期结果与验收，明示交给读者的 agent
+- 价值区：写清过程，就地露出积木与认知基础，配验收
+- 每处指派后面备注脱靶提醒，读者撞上时能认出缺的是哪块
+
+教程不和 AI 的浪潮对抗，只把学习价值标出来。
+
+- SKILL 本体：[skills/ai-era-tutorial/SKILL.md](skills/ai-era-tutorial/SKILL.md)
+- 来龙去脉：《锻炼住在长过程的那段路里》（[skills/ai-era-tutorial/references/blog.md](skills/ai-era-tutorial/references/blog.md)）
+
 ## 安装
 
 把仓库地址和你想要的 skill 告诉你的 Agent，它会自行安装：
 
-> 请从 https://github.com/idealjs/skills 安装 code-tree 和 distill
+> 请从 https://github.com/idealjs/skills 安装 code-tree、distill 和 ai-era-tutorial
 
 装好后新开一个会话，输入 `/` 即可看到。SKILL.md 格式与 Claude Code 兼容，放进 `~/.claude/skills/` 同样生效。
 
