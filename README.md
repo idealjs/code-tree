@@ -157,7 +157,7 @@ cp -r code-tree/skills/code-tree ~/.claude/skills/
 ```text
 code-tree/
 ├── README.md                        # 本文件:来龙去脉 + 安装教程
-├── LICENSE                          # MIT
+├── LICENSE                          # CC BY-NC 4.0
 └── skills/
     └── code-tree/
         ├── SKILL.md                 # SKILL 本体:理论 + 实操规则
@@ -171,4 +171,11 @@ code-tree/
 
 ## License
 
-[MIT](LICENSE)
+本项目采用 [CC BY-NC 4.0(署名-非商业性使用 4.0 国际)](LICENSE) 授权。SKILL 本质是公开文本,用户必然能看到全部内容,所以本许可不(也无法)追求闭源,只约束两件事:
+
+1. **禁止商用** — 不得将本 SKILL(原样或改动后)用于商业目的,包括集成进付费产品、在公司生产环境中营利性使用等。商业使用需事先获得作者书面授权。
+2. **分发须署名** — 无论是原样分发、修改后分发,还是包装、集成进其他工具/插件/发行版,都必须保留原作者署名 **cqh** 及原始仓库链接 [idealjs/code-tree](https://github.com/idealjs/code-tree)。
+
+在此前提下,你可以自由地复制、修改、再分发本作品。
+
+> 注:由于包含"非商业"限制,本项目不再符合 OSI 开源定义,属于"免费但保留部分权利"的内容许可。CC 许可适合本仓库的纯文本内容(SKILL 规则、文章);若未来加入可执行代码,将另行考虑代码许可证。
