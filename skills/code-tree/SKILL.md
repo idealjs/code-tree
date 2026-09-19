@@ -1,24 +1,17 @@
 ---
 name: code-tree
-description: 树形代码组织方法。核心规律:没有以树的形式规划的代码,必然生长为图的形状(函数交叉调用、数据交叉引用),设计模式救不了,只有先规划树才救得了。主干/侧枝/叶子递归同构;叶子超过 300 行就升级为侧枝并新配主干(沿真实结构切分,不机械拆);反模式是藤、碎片、超载;AI 应主动规划结构,在回复开头给出结构规划。Use when writing or refactoring code, creating or restructuring modules, splitting or merging files, reviewing AI-generated code structure, when a file grows past ~300 lines, when call chains are hard to follow, or when the user mentions 代码结构 / 重构 / 拆分文件 / 模块划分 / 主干 / 树形组织 / 设计模式 / 解耦 / code structure / file organization / module boundaries — even if they don't say "tree".
+description: 树形代码组织 skill。规则:写码前先规划树形结构(主干/侧枝/叶子);叶子 ≤ 300 行,超载升级为侧枝并新配主干,沿真实结构切分、禁止机械拆;反模式是藤/碎片/超载;AI 主动规划结构,回复开头先给结构规划。Use when writing or refactoring code, creating or restructuring modules, splitting or merging files, reviewing code structure, when a file grows past ~300 lines, when call chains are hard to follow, or when the user mentions 代码结构 / 重构 / 拆分文件 / 模块划分 / 主干 / 树形组织 / 设计模式 / 解耦 / code structure / file organization / module boundaries — even if they don't say "tree".
 ---
 
 # Code Tree:组织必须是树
 
-一套代码组织理论,来自一位 8 年经验全栈工程师在 vibe coding 实践中的反复打磨。它回答两个问题:**AI 生成的代码逻辑正确,为什么读不懂?设计模式学了那么多,为什么困境依旧?** 本 skill 的职责:在生成与重构代码时,主动以树的形式规划结构——让人类既能看到枝干,也能看到所有叶面。
+本 skill 在生成与重构代码时,主动以树的形式规划结构——让人类既能看到枝干,也能看到所有叶面。理论完整推导见 [references/blog.md](references/blog.md)。
 
-## 核心模型:不规划,必成图
+## 核心原则:先规划树,再写代码
 
-**没有以树的形式规划的代码,必然生长为图的形状。**
+**没有以树的形式规划的代码,必然按最短路径生长为图的形状**——函数交叉调用、数据交叉引用,能跑但没人能读懂。树(目录结构、模块边界)就是压住这种生长的骨架;"解耦"的本质是把图约束在树内,图跨越所有枝干就是坏代码。
 
-这是默认结局,不是偶发事故。没有人规划结构时,代码按最短路径生长:函数之间交叉调用,数据之间交叉引用,调用链绕来绕去,主体找不到。图状代码能跑,但没人能读懂。
-
-- **图**(交叉调用、交叉引用)是代码失去规划后的形状。
-- **树**(目录结构、模块边界)是对生长的主动规划:目录层级和模块边界,就是刻意压住图化生长的骨架。
-
-所谓"解耦",本质就是把图约束在树内;图跨越所有枝干,就是坏代码。
-
-**设计模式解决不了这个问题。** 过去学过的众多设计模式,大多是在图状代码上打补丁——再加一层抽象、再包一层间接,结果徒增编码困境。模式没有指出根本问题(结构从未以树的形式被规划),自然也给不出对应的解决方案。根本解只有一个:动手之前,先把树规划出来。
+设计模式救不了:给图状代码加抽象、包间接只是打补丁,结构没被规划过,补丁只会更难读。出路只有一个——动手之前,先把树规划出来。
 
 ## 树的三个角色:主干、侧枝、叶子
 
@@ -103,7 +96,7 @@ description: 树形代码组织方法。核心规律:没有以树的形式规划
 
 **结构规划是 AI 在处理过程中的职责,不是等人下达的输入。** 生成或重构代码时,主动按本理论规划树形结构,而不是放任结构随意生长。
 
-**人类负责 review 与裁决。** 正因为 AI 已经把树搭好,review 才会快:扫一眼主干就能确认组织是否合理,而不必在混乱结构里逐文件考古。AI 优化的是"下一个 token 最可能的写法"(统计上最常见),不是"结构上最好",所以人类的 review 不可省略——但有了清晰的树,review 从"读懂全部代码"降为"核对一棵树"。
+**人类负责 review 与裁决。** AI 的输出是"统计上最常见的写法",不是"结构上最好",所以 review 不可省略;但树已由 AI 搭好,review 只是核对一棵树,不是逐文件考古。
 
 实操要求:接到编码指令时,**先在回复开头给出简短的结构规划,再动手写**;涉及业务边界的重大分歧点,向用户确认后再继续。
 
