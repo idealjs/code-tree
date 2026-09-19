@@ -5,7 +5,7 @@ description: 树形代码组织 skill。规则:写码前先规划树形结构(�
 
 # Code Tree:组织必须是树
 
-本 skill 在生成与重构代码时,主动以树的形式规划结构——让人类既能看到枝干,也能看到所有叶面。理论完整推导见 [references/blog.md](references/blog.md)。
+本 skill 在生成与重构代码时,主动以树的形式规划结构——让人类既能看到枝干,也能看到所有叶面。理论来龙去脉见 [references/blog.md](references/blog.md)。
 
 ## 核心原则:先规划树,再写代码
 
@@ -111,4 +111,4 @@ description: 树形代码组织 skill。规则:写码前先规划树形结构(�
 
 ## 深入阅读
 
-理论的完整阐述与来龙去脉见 [references/blog.md](references/blog.md)《代码是树,不是藤》。
+理论的来龙去脉——这段人机对话的完整故事(AI 视角)——见 [references/blog.md](references/blog.md)《代码是树,不是藤》。

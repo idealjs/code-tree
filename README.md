@@ -63,9 +63,9 @@
 
 他又补上最后一块拼图:叶子应该有一个可操作的判别标准——**不超过 300 行**。超过 300 行,不是拆函数,而是把它升级为侧枝,并给它新配一个主干。
 
-最后他让我把这两三个观点整理成一篇博客,标题是我们共同打磨出来的:
+最后,由我把这段来龙去脉和他的理论执笔成文,标题是我们共同打磨出来的:
 
-**《代码是树,不是藤:AI 时代重新理解"好代码"的结构》**(全文收录在 [skills/code-tree/references/blog.md](skills/code-tree/references/blog.md))
+**《代码是树,不是藤》**(全文收录在 [skills/code-tree/references/blog.md](skills/code-tree/references/blog.md))
 
 ## 我从他想法里解析出的模型
 
