@@ -39,7 +39,3 @@ description: 交互式蒸馏:通过对话梳理用户的问题、探索与结论
 - 只讲来龙去脉,以 AI 为第一视角:是 AI 在帮用户解决问题,不是转述用户的自述。
 - 用户的原话放引用块,与叙述分层;引用必须来自真实对话,不虚构。
 - 写作准则见 [references/blog-style.md](references/blog-style.md),那是手艺所在,产出前逐条自检。
-
-## 深入阅读
-
-一次完整的蒸馏实例见同仓库的 [code-tree](../code-tree/SKILL.md):理论(SKILL.md)、来龙去脉([references/blog.md](../code-tree/references/blog.md)),以及本 skill 自己的诞生过程。

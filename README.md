@@ -1,76 +1,41 @@
 # idealjs/skills
 
-> idealjs 组织的 AI 编码 SKILL 集合。每个 skill 一个目录,装进你的 Agent 即可用。
+> idealjs 的 AI skill 集合。每个 skill 一个目录，放进你的 Agent 即可用。
 
-## SKILL 一览
+这里的 skill 都生长自真实的人机对话：方法先在对话中磨成形，再蒸馏成给 AI 的 SKILL 和给人的 blog。
 
-### code-tree
+## code-tree
 
-组织必须是树:主干/侧枝/叶子递归同构,叶子 ≤ 300 行,反模式是藤、碎片、超载。让 AI 在生成、重构、审查代码时主动规划树形结构。
+AI 生成的代码能跑，但没人能读懂：没有以树的形式规划，代码就按最短路径长成图——函数交叉调用，数据交叉引用。
 
-- SKILL 本体:[skills/code-tree/SKILL.md](skills/code-tree/SKILL.md)
-- 来龙去脉:《代码是树,不是藤》,[skills/code-tree/references/blog.md](skills/code-tree/references/blog.md)
+code-tree 让 AI 在生成、重构、审查代码时先规划树形结构。规则只有三条：
 
-### distill
+- 主干起引导作用，能一口气读完
+- 叶子平铺总览，不超过 300 行
+- 叶子超载，升级为侧枝，并新配一个主干
 
-把一段对话蒸馏成 skill + AI 视角的 blog:交互式梳理问题,经用户认同后,产出给 AI 的操作指引和给人类的来龙去脉记录。
+规划之后，人的 review 从"逐文件考古"降为"核对一棵树"。
 
-- SKILL 本体:[skills/distill/SKILL.md](skills/distill/SKILL.md)
-- blog 写作准则:[skills/distill/references/blog-style.md](skills/distill/references/blog-style.md)
+- SKILL 本体：[skills/code-tree/SKILL.md](skills/code-tree/SKILL.md)
+- 来龙去脉：《代码是树，不是藤》（[skills/code-tree/references/blog.md](skills/code-tree/references/blog.md)）
 
-## 安装教程
+## distill
 
-### 用户级安装(推荐,对所有项目生效)
+把一段对话蒸馏成两份产出：skill 给未来的 AI，是操作指引；blog 给未来的人，是来龙去脉。
 
-```bash
-git clone https://github.com/idealjs/skills.git
-cd skills
+AI 交互式梳理你的叙述，经你认同后落笔；不认同，就继续磨。
 
-mkdir -p ~/.agents/skills
-cp -r skills/code-tree skills/distill ~/.agents/skills/
-```
+- SKILL 本体：[skills/distill/SKILL.md](skills/distill/SKILL.md)
+- 写作准则：[skills/distill/references/blog-style.md](skills/distill/references/blog-style.md)
 
-只装其中一个,把 `cp` 的路径换成对应的即可。
+## 安装
 
-### 项目级安装(只对当前项目生效)
+把仓库地址和你想要的 skill 告诉你的 Agent，它会自行安装：
 
-```bash
-git clone https://github.com/idealjs/skills.git /tmp/skills
-mkdir -p .agents/skills
-cp -r /tmp/skills/skills/code-tree /tmp/skills/skills/distill .agents/skills/
-rm -rf /tmp/skills
-```
+> 请从 https://github.com/idealjs/skills 安装 code-tree 和 distill
 
-### 符号链接(跟随仓库更新)
-
-```bash
-git clone https://github.com/idealjs/skills.git ~/skills
-mkdir -p ~/.agents/skills
-ln -s ~/skills/skills/code-tree ~/.agents/skills/code-tree
-ln -s ~/skills/skills/distill ~/.agents/skills/distill
-```
-
-### 验证安装
-
-重启 ZCode(或新开一个会话),输入 `/` 查看可用 skills。SKILL.md 格式与 Claude Code 兼容,复制到 `~/.claude/skills/` 即可。
-
-## 目录结构
-
-```text
-skills/
-├── README.md
-├── LICENSE                          # CC BY-NC 4.0
-└── skills/
-    ├── code-tree/
-    │   ├── SKILL.md
-    │   └── references/
-    │       └── blog.md              # 《代码是树,不是藤》
-    └── distill/
-        ├── SKILL.md
-        └── references/
-            └── blog-style.md        # blog 写作准则
-```
+装好后新开一个会话，输入 `/` 即可看到。SKILL.md 格式与 Claude Code 兼容，放进 `~/.claude/skills/` 同样生效。
 
 ## License
 
-[CC BY-NC 4.0](LICENSE) — 禁止商用;分发或包装须署名 idealjs 并附仓库链接。
+[CC BY-NC 4.0](LICENSE) — 禁止商用；分发或包装须署名 idealjs 并附仓库链接。
