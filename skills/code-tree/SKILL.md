@@ -38,16 +38,18 @@ description: 树形代码组织 skill。规则:写码前先规划树形结构(�
 ```text
 之前(超载的叶子):
     parent/
-    └── big_leaf.rs        ← 800 行,什么都往里塞
+    └── billing.rs         ← 800 行,发票/支付/退款全塞在一起
 
 之后(升级为侧枝):
     parent/
-    └── big_leaf/
-        ├── mod.rs         ← 新长出来的主干:引导 + 组合
-        ├── part_a.rs      ← 叶子
-        ├── part_b.rs      ← 叶子
-        └── part_c.rs      ← 叶子
+    └── billing/
+        ├── mod.rs         ← 新长出来的主干:组合 + 引导
+        ├── invoice.rs     ← 叶子:发票主体
+        ├── payment.rs     ← 叶子:支付主体
+        └── refund.rs      ← 叶子:退款主体
 ```
+
+注意新叶子的命名方式:每片叶子的名字来自文件内部真实长出的主体,而不是 part_a / part_b 这样的切割顺序——后者恰恰是要禁止的机械拆分。
 
 两条铁律:
 
