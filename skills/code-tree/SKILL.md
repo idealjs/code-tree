@@ -1,6 +1,6 @@
 ---
 name: code-tree
-description: 树形代码组织 skill。规则:写码前先规划树形结构(主干/侧枝/叶子);叶子 ≤ 300 行,超载升级为侧枝并新配主干,沿真实结构切分、禁止机械拆;反模式是藤/碎片/超载;AI 主动规划结构,回复开头先给结构规划。Use when writing or refactoring code, creating or restructuring modules, splitting or merging files, reviewing code structure, when a file grows past ~300 lines, when call chains are hard to follow, or when the user mentions 代码结构 / 重构 / 拆分文件 / 模块划分 / 主干 / 树形组织 / 设计模式 / 解耦 / code structure / file organization / module boundaries — even if they don't say "tree".
+description: 树形代码组织 skill。规则:写码前先规划树形结构(主干/侧枝/叶子);叶子 ≤ 300 行,超载升级为侧枝并新配主干,沿真实结构切分、禁止机械拆;反模式是藤/碎片/超载;AI 主动规划结构,回复开头先给结构规划。Use when writing or refactoring code, creating or restructuring modules, splitting or merging files, reviewing code structure, when a file grows past ~300 lines, when call chains are hard to follow, or when the user mentions 代码结构 / 重构 / 拆分文件 / 模块划分 / 主干 / 树形组织 / 设计模式 / 解耦 / 文件命名 / 重命名 / code structure / file organization / module boundaries / naming / rename — even if they don't say "tree".
 ---
 
 # Code Tree:组织必须是树
@@ -49,12 +49,22 @@ description: 树形代码组织 skill。规则:写码前先规划树形结构(�
         └── refund.rs      ← 叶子:退款主体
 ```
 
-注意新叶子的命名方式:每片叶子的名字来自文件内部真实长出的主体,而不是 part_a / part_b 这样的切割顺序——后者恰恰是要禁止的机械拆分。
+新叶子的名字来自它内部真实长出的主体——命名规则详见下节。
 
 两条铁律:
 
 1. **必须同时长出一个主干。** 只拆叶子、不立主干,就是把树拆成了藤——这是 AI 最常犯的错。
 2. **切分线落在真实结构上,不做机械拆分。** 按主体、职责划分,让每一片新叶子都是完整、自洽的主体;不按行数均分,不按函数数量凑,不为了拆而拆。找不到自然的切分线,说明结构其实还没长好(或命名没理清):先厘清职责(必要时询问用户),再动手。机械拆出来的"叶子"互相纠缠、各自残缺,本质仍是碎片。
+
+## 命名:路径也要引导
+
+主干的引导作用,一半由路径承担:读者不打开文件,先读路径定位主体。名字有歧义,结构再对,树也在误导。
+
+**同一棵树内,同一个词不得在不同层次指不同主体。** 各层用自己所处的视角命名:名字回答"从我这一层看,它是什么",不照搬这个词在别层的含义。同一个词跨层指着不同主体,路径就从路标变成误导。
+
+名字必须来自文件内部真实长出的主体。part_a / part_b 这类按切割顺序起的名字,是机械拆分的铁证。
+
+检验方法:**只读路径、不看内容,能说出这个模块是什么、属于哪一层吗?** 名字经不起这个检验,无论内容多干净,树都是误导的。
 
 ## 三个反模式
 
@@ -76,6 +86,7 @@ description: 树形代码组织 skill。规则:写码前先规划树形结构(�
 4. **文件超过 300 行时**,按"300 行规则"升级为侧枝,不要继续往里加函数。
 5. **不要发明只调用一次的转发函数**;不为拆而拆。
 6. 跨模块调用必须走显式接口,不碰对方内部实现。
+7. 命名经得起只读路径的检验:名字来自真实主体;同一棵树内,同一个词不在不同层次指不同主体。
 
 ### 审查代码时
 
@@ -83,6 +94,7 @@ description: 树形代码组织 skill。规则:写码前先规划树形结构(�
 
 - 主干是否清晰可见、能一口气读完?
 - 每个非叶子节点是否像主干一样起引导作用?
+- 只读路径、不看内容,能说出每个模块是什么、属于哪一层吗?同一个词有没有在不同层次指不同主体?
 - 有没有只调用一次、没有引导作用的转发函数?(碎片)
 - 有没有文件超过 300 行却未升级为侧枝?(超载)
 - 升级时是否新配了主干、沿真实主体边界切分?(藤 / 机械拆分)
@@ -91,6 +103,7 @@ description: 树形代码组织 skill。规则:写码前先规划树形结构(�
 ### 重构时
 
 - 超载叶子 → 升级为侧枝,配新主干;沿真实主体边界切分。
+- 同名异义 → 按所处层次的视角重命名,让路径重新引导。
 - 碎片 → 合并回叶子,恢复平铺总览。
 - 藤 → 提炼主干:把主流程显式地写在一个能一口气读完的地方。
 
